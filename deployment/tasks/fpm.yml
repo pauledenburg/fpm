@@ -8,3 +8,10 @@
     with_items:
       - git
       - wget
+
+  # Install ruby
+  - include: ruby.yml
+
+  # Install gems                                                                                                     
+  - name: fpm | Ensure FPM fpm installed
+    gem: name=fpm state=present
