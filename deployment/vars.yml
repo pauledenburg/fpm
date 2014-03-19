@@ -1,0 +1,40 @@
+---
+project_name: jenkins
+system_packages:
+  - rsync
+  - logger
+  - git
+  - libevent-dev
+  - python-dev
+  - python-setuptools
+  - python-mysqldb
+python_packages:
+  - pip
+git:
+  name: Paul Edenburg
+  email: paul@i2s.nl
+
+#
+# Git
+# 
+git:
+  name: Paul Edenburg
+  email: paul@i2s.nl
+  repo_url: "git@git.i2s.nl:{{project_name}}.git"
+  repo_remote: origin
+
+#
+# Apache2
+#
+apache:
+  docroot: "/var/www/vhosts/{{ website_fqdn }}/httpdocs"
+  user: "www-data"
+
+#
+# Webserver configuration
+# 
+timestamp: "{{ ansible_date_time.date }}_{{ ansible_date_time.hour }}{{ ansible_date_time.minute }}"
+releases_path: "{{ apache.docroot }}/releases"
+newrelease_path: "{{ releases_path }}/{{timestamp}}"
+shared_path: "{{ apache.docroot}}/shared"
+

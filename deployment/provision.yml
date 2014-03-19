@@ -1,0 +1,29 @@
+---
+- hosts: servers
+  vars_files:
+    - vars.yml
+  gather_facts: true
+  sudo: true
+
+  tasks:
+
+  # SSH
+  - include: tasks/ssh.yml
+
+  # Update the apt-cache
+  - name: apt | Update the apt cache 
+    apt: update_cache=yes cache_valid_time=3600
+    sudo: yes
+
+  # Miscellaneous
+  - name: apt | Ensure variaty of tools is installed
+    apt: pkg={{ item }} state=installed
+    with_items:
+      - vim
+      - curl
+
+  # FPM
+  - include: tasks/fpm.yml
+
+  handlers:
+    - include: handlers.yml
