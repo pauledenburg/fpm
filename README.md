@@ -8,10 +8,11 @@ using [FPM](https://github.com/jordansissel/fpm).
 ## Prerequirements
 To be able to use this Vagrant box,  you need to have Vagrant and Virtual Box installed:
 
-- Vagrant: [http://www.vagrantup.com/]
-- VirtualBox: [https://www.virtualbox.org/]
+- VirtualBox - for creating the VM: [https://www.virtualbox.org/]
+- Vagrant - for managing the VM: [http://www.vagrantup.com/]
+- Ansible - for provisioning the VM: https://github.com/ansible/ansible
 
-## Fire up the box
+## Start the Virtual Machine
 
 1. Get the source `git clone https://github.com:pauledenburg/fpm; cd fpm`
 2. Start the box `vagrant up`
