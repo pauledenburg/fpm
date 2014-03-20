@@ -2,7 +2,7 @@
 - hosts: servers
   vars_files:
     - vars.yml
-  gather_facts: true
+  gather_facts: false
   sudo: true
 
   tasks:
@@ -24,6 +24,15 @@
 
   # FPM
   - include: tasks/fpm.yml
+
+  # bash_it
+  - name: misc. | Download bash_it for a nice Bash environment
+    git: repo=https://github.com/pauledenburg/bash_it.git dest=/home/vagrant/.bash_it 
+    sudo_user: vagrant
+
+  - name: misc. | Install bash_it
+    command: ~/.bash_it/install.sh
+    sudo_user: vagrant
 
   handlers:
     - include: handlers.yml

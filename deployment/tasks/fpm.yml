@@ -1,6 +1,7 @@
 ---
   # Only run "update_cache=yes" if the last one is more than more than 3600 seconds ago
-  - apt: update_cache=yes cache_valid_time=3600
+  - name: fpm | Update apt-cache when needed
+    apt: update_cache=yes cache_valid_time=3600
 
   # prerequirements
   - name: fpm | Ensure prerequirements are installed
@@ -8,10 +9,12 @@
     with_items:
       - git
       - wget
+      - php-pear
 
   # Install ruby
   - include: ruby.yml
 
-  # Install gems                                                                                                     
+  # Install gems
   - name: fpm | Ensure FPM fpm installed
     gem: name=fpm state=present
+    sudo: yes
