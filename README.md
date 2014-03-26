@@ -20,7 +20,7 @@ To be able to use this Vagrant box,  you need to have Vagrant and Virtual Box in
 
 # Create packages
 ## Debian package with PEAR as its source
-`fpm -s pear -a all -n "PHPUnit" --depends "php5" --pear-channel pear.phpunit.de --pear-channel-update PHPUnit`
+`fpm -s pear -t deb -a all -n "PHPUnit" --depends "php5" --pear-channel pear.phpunit.de --pear-channel-update PHPUnit`
 
 ## RPM package based on directory
 `fpm -s dir -t rpm -n "slashbin" -v 1.0 /bin /sbin`
