@@ -16,10 +16,11 @@ To be able to use this Vagrant box,  you need to have Vagrant and Virtual Box in
 
 1. Get the source `git clone https://github.com:pauledenburg/fpm; cd fpm`
 2. Start the box `vagrant up`
+3. SSH into the box `vagrant ssh`
 
 # Create packages
 ## Debian package with PEAR as its source
-`fpm -s pear -a all -n "PHPUnit" --pear-channel pear.phpunit.de --pear-channel-update PHPUnit`
+`fpm -s pear -a all -n "PHPUnit" --depends "php5" --pear-channel pear.phpunit.de --pear-channel-update PHPUnit`
 
 ## RPM package based on directory
 `fpm -s dir -t rpm -n "slashbin" -v 1.0 /bin /sbin`
